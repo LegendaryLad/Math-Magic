@@ -1,7 +1,7 @@
 """Simple combat engine for Math&Magic battles."""
+
 import time
 from dataclasses import dataclass
-from typing import Callable
 
 from .monsters import create_monster
 from .problems import Problem, generate_problem
@@ -24,7 +24,6 @@ class CombatEngine:
         topic: str,
         level: int,
         num_problems: int = 5,
-        timer_func: Callable[[float], None] | None = None,
     ) -> None:
         """Initialize the combat engine.
 
@@ -36,15 +35,12 @@ class CombatEngine:
             Difficulty level of the encounter.
         num_problems:
             Number of problems (turns) in the battle.
-        timer_func:
-            Function to pause execution, injectable for tests.
         """
         self.topic = topic
         self.level = level
         self.num_problems = num_problems
         self.player_hp = BASE_PLAYER_HP
         self.monster = create_monster(topic, level)
-        self.timer_func = timer_func or time.sleep
 
     # ---------- private helpers ----------
     def _time_allowed(self) -> int:

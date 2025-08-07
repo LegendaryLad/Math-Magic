@@ -4,7 +4,6 @@ import argparse
 
 from math_magic.combat import CombatEngine
 
-
 def main() -> None:
     """Parse CLI arguments and run a demo battle."""
     parser = argparse.ArgumentParser(description="Demo Math&Magic battle.")
